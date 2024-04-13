@@ -29,20 +29,21 @@ const App = () => {
   }
   const notesList=Object.values(notes).sort((a,b)=>b.updatedAt.getTime()-a.updatedAt.getTime())
 
-  const handleChangeNoteContent=(
-    noteId:string,
-    content:JSONContent,
-    title="New note")=>{
-    setNotes((notes)=>({
+  const handleChangeNoteContent = (
+    noteId: string,
+    content: JSONContent,
+    title = "New note"
+  ) => {
+    setNotes((notes) => ({
       ...notes,
-      [noteId]:{
+      [noteId]: {
         ...notes[noteId],
         content,
-        updatedAt:new Date(),
+        updatedAt: new Date(),
         title,
-      }
-    }))
-  }
+      },
+    }));
+  };
   return (
     <div className={styles.pageContainer}>
       <div className={styles.sidebar}>
