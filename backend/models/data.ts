@@ -1,21 +1,15 @@
 import mongoose from "mongoose";
 
 const dataSchema = new mongoose.Schema({
-    id:{
-        type:String,
+    name: {
+        required: true,
+        type: String
     },
-    title:{
-        type:String,
-        required:true,
-    },
-    content:{
-        type:Object,
-        required:true,
-    },
-    updatedAt:{
-        type:Date,
-    },
-},{timestamps:true});
+    age: {
+        required: true,
+        type: Number
+    }
+},{timestamps: true})
 
 const Data = mongoose.model("Data",dataSchema);
 
