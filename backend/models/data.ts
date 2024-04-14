@@ -1,13 +1,21 @@
 import mongoose from "mongoose";
 
 const dataSchema = new mongoose.Schema({
-    name: {
+    id: {
         required: true,
         type: String
     },
-    age: {
+    title: {
         required: true,
-        type: Number
+        type: String
+    },
+    content:{
+        required: true,
+        type: Object
+    },
+    updatedAt:{
+        required: true,
+        type: Date
     }
 },{timestamps: true})
 

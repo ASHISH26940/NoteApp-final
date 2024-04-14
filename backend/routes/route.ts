@@ -8,8 +8,10 @@ const router=express.Router();
 
 router.post('/post',async (req,res)=>{
     const data=new Model({
-        name:req.body.name,
-        age:req.body.age
+        id:req.body.id,
+        title:req.body.title,
+        content:req.body.content,
+        updatedAt:req.body.updatedAt
     });
     try{
         const savedData=await data.save();
@@ -21,12 +23,24 @@ router.post('/post',async (req,res)=>{
 })
 
 //Get all Method
-router.get('/getAll',(req,res)=>{
-    res.send('Get All API');
+router.get('/getAll',async(req,res)=>{
+    try{
+        const data=await Model.find();
+        res.status(200).json(data);
+    }catch(err)
+    {
+        res.status(500).json({message:err.message});
+    }
 })
 //get by ID Method
-router.get('/getOne/:id',(req,res)=>{
-    res.send(req.params.id);
+router.get('/getOne/:id',async (req,res)=>{
+    try{
+        const data=await Model.findById(req.params.id);
+        res.status(200).json(data);
+    }catch(error)
+    {
+        res.status(500).json({message:error.message});
+    }
 })
 
 //Update by Method ID

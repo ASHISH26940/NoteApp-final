@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import routes from './routes/route';
 import bodyParser from "body-parser";
+import cors from "cors";
 const mongoString = 'mongodb+srv://kaizol:kcL8ddwaZzYYnpS0@cluster0.q3za38c.mongodb.net/';
 
 
@@ -23,7 +24,7 @@ database.once('connected', () => {
 
 const app = express();
 app.use(bodyParser.json());//yeh line ko upar wala line ke thik niche likhna nahi likhega toh fir 1 din jayega waste hoga
-
+app.use(cors());
 app.use('/api', routes);
 
 
