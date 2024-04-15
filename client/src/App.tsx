@@ -117,6 +117,14 @@ const App = () => {
     saveNote();
   }
 
+
+  // useEffect(()=>{
+  //   if(activeNote){
+  //     setInterval(handleSaveContent,5000);
+  //   }
+
+  // },[activeNote])
+
 const handleUpdateContent = ()=>{
   const note = activeNote;
   if(!note){
@@ -178,7 +186,10 @@ const handleUpdateContent = ()=>{
         }
       </div>
       </div>
-      {activeNote ? ( <NoteEditor note={activeNote} onChange={(content,title)=>{handleChangeNoteContent(activeNote.id,content,title)}} />):(<div>Select a note to get started</div> )}
+      {activeNote ? ( <NoteEditor note={activeNote} onChange={(content,title)=>{
+        ()=>{handleChangeNoteContent(activeNote.id,content,title)}
+        ()=>{handleSaveContent()}
+      }} />):(<div>Select a note to get started</div> )}
     </div>
   );
 }
